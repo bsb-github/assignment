@@ -7,31 +7,17 @@ import {
   TextInput,
   KeyboardAvoidingView,
 } from "react-native";
-import { initializeApp } from "firebase/app";
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
 
-const Stack = createNativeStackNavigator();
+
 
 export default function SignUpScreen({ navigation }) {
-  const firebaseConfig = {
-    apiKey: "AIzaSyBg56fI1Hqj5ZL1i18i5ToV7nRyq3fz3F4",
-    authDomain: "fir-auth-91a42.firebaseapp.com",
-    projectId: "fir-auth-91a42",
-    databaseURL: "https://fir-auth-91a42-default-rtdb.firebaseio.com/",
-    storageBucket: "fir-auth-91a42.appspot.com",
-    messagingSenderId: "444509202678",
-    appId: "1:444509202678:web:5716e682ed960abc3824d7",
-  };
-
-  //const app = initializeApp(firebaseConfig);
   const auth = getAuth();
   const [Email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  // const database = getDatabase(app);
 
   const handleSignUp = () => {
     let userId = 1;
@@ -58,7 +44,9 @@ export default function SignUpScreen({ navigation }) {
     navigation.setOptions({ headerShown: false });
   }, [navigation]);
   const onpressed = () => {
-    navigation.goBack();
+    return(    
+      navigation.goBack()
+);
   };
   var back = "<-";
   return (
@@ -77,6 +65,7 @@ export default function SignUpScreen({ navigation }) {
         </View>
         <View>
           <TouchableOpacity
+          onPress={onpressed}
             style={{
               marginTop: 8,
               justifyContent: "space-between",

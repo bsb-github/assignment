@@ -23,8 +23,10 @@ function SignIn({ navigation }) {
   React.useLayoutEffect(() => {
     navigation.setOptions({ headerShown: false });
   }, [navigation]);
+
+
   const onpressed = () => {
-    navigation.navigate("SignUp");
+    navigation.navigate("SignUp")
   };
  
   const [Email, setEmail] = useState("");
@@ -122,9 +124,21 @@ const app = initializeApp(firebaseConfig);
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="SignIn" component={SignIn} />
+      <Stack.Screen name="home" component={HomeScreen}   options={{
+          title: 'Add Product',
+          headerStyle: {
+            backgroundColor: '#46cd80',
+          },
+          headerTintColor: '#1c213b',
+          headerTitleStyle: {
+            fontWeight:'normal'
+          },
+        }} />
+      <Stack.Screen name="SignIn" component={SignIn} />
+     
+       
         <Stack.Screen name="SignUp" component={SignUpScreen} />
-        <Stack.Screen name="home" component={HomeScreen} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -157,7 +171,7 @@ const styles = StyleSheet.create({
   },
   marginAbove: {
     marginTop: 15,
-    marginLeft: 15,
+    marginLeft: 20,
   },
   container2: {
     marginTop: 30,
